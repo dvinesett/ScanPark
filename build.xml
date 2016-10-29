@@ -1,8 +1,8 @@
-<project name="SimpleSample" basedir="." default="rebuild-run">
+<project name="HelloOpenCV" basedir="." default="rebuild-run">
 
     <property name="ocvDir" value="/usr/local/lib/opencv-2.4.13"/>
-    <property name="ocvJarDir" value="${ocvDir}/bin"/>
-    <property name="ocvLibDir" value="${ocvDir}/lib"/>
+    <property name="ocvJarDir" value="${ocvDir}/build/bin"/>
+    <property name="ocvLibDir" value="${ocvDir}/build/lib"/>
 
     <property name="src.dir"     value="src"/>
 
@@ -24,7 +24,13 @@
 
     <target name="compile">
         <mkdir dir="${classes.dir}"/>
-        <javac includeantruntime="false" srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
+        <javac
+            includeantruntime="false"
+            srcdir="${src.dir}"
+            destdir="${classes.dir}"
+            classpathref="classpath"
+            debug="true"
+            debuglevel="lines,vars,source"/>
     </target>
 
     <target name="jar" depends="compile">
